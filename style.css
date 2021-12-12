@@ -17,6 +17,7 @@ body,html{
 }
 body{
     background-color: whitesmoke;
+    overflow-x: hidden;
 }
 *{
     font-family: 'Baloo Bhaijaan 2', cursive;
@@ -27,7 +28,12 @@ body{
     top: 0;
     left: 0;
     width: 100%;
+    height: 350px;
     z-index: -1;
+    background-image: url("img/bg-desktop-light.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 /* main section */
@@ -196,9 +202,6 @@ flex-direction: column;
     .list label input{
         width: 73%;
     }
-    .img img{
-        height: 250px;
-    }
 }
 @media screen and (max-width: 400px) {
     section{
@@ -209,8 +212,5 @@ flex-direction: column;
     }
     .list label input{
         width: 58%;
-    }
-    .img img{
-        height: 200px;
     }
 }
