@@ -40,7 +40,7 @@ flex-direction: column;
 .title{
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 500px;
 }
 .title h2{
     color: white;
@@ -57,9 +57,10 @@ flex-direction: column;
 
 /* -------------add to list input----------------- */
 .insert{
+    width: 100%;
     user-select: none;
     display: flex;
-    padding: 7px 13px;
+    padding: 9px 13px;
     border-radius: 4px;
     background-color: white;
     box-shadow: 0px 0px 10px 1px rgb(173, 173, 173);
@@ -103,15 +104,23 @@ flex-direction: column;
 .list{
     flex-direction: column;
     margin-top: 20px;
-    padding:10px 0px 0px 0px;
+    padding: 4px 0px 0px 0px;
 }
 .list label{
+    width: 100%;
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin-bottom: 10px;
-    padding: 5px 10px 10px 10px;
+    margin-bottom: 3px;
+    padding: 0px 0px 0px 10px;
     border-bottom: 2px solid rgb(219, 219, 219);
+}
+.list label:hover .tools{
+    visibility: visible;
+}
+.list label .tools{
+    display: flex;
+    justify-content: flex-end;
 }
 .list label:last-child{
     border-bottom: none;
@@ -141,10 +150,67 @@ flex-direction: column;
 .list label input:checked + .checkbox i {
     opacity: 1;
 }
-.list label input{
+.list label input[type="checkbox"]{
     display: none;
 }
-.list label p{
+.list label input{
+    display: inline-block;
     margin: 0;
     font-size: 18px;
+    width: 78%;
+    padding: 10px 0px;
+}
+.list label input:disabled{
+    color: black;
+    background-color: transparent;
+}
+/* edit/close btn */
+.list label .tools{
+    visibility: hidden;
+}
+.list label .tools button{
+    background-color: transparent;
+    border: none;
+    margin-left: 5px;
+    cursor: pointer;
+    color: rgb(204, 204, 204);
+}
+.list label .tools button:hover{
+    color: rgb(143, 143, 143);
+}
+.list label .tools button:active{
+    color: rgb(53, 53, 53);
+}
+.list label .tools button:first-child{
+    font-size: 10px;
+}
+.list label .tools button:last-child{
+    font-size: 15px;
+}
+
+/* media query */
+@media screen and (max-width: 650px) {
+    .title{
+        width: 400px;
+    }
+    .list label input{
+        width: 73%;
+    }
+    .img img{
+        height: 250px;
+    }
+}
+@media screen and (max-width: 400px) {
+    section{
+        width: 260px;
+    }
+    .title{
+        width: 100%;
+    }
+    .list label input{
+        width: 58%;
+    }
+    .img img{
+        height: 200px;
+    }
 }
