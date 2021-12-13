@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&family=Fuzzy+Bubbles&family=Ubuntu:wght@300&display=swap');
 
-/* {
-    font-family: 'Baloo Bhaijaan 2', cursive;
-    font-family: 'Fuzzy Bubbles', cursive;
-    font-family: 'Ubuntu', sans-serif;
-} */
+:root{
+    --main-box-shadow:0px 0px 10px 1px rgb(173, 173, 173);
+    --background-color: #fafafa;
+    --white-color: white;
+    --list-Separator:rgb(201, 201, 201);
+    --tools-default-color:rgb(201, 201, 201);
+    --line-through:rgb(199, 199, 199);
+    --black-color:black;
+    --tools-hover:rgb(143, 143, 143);
+    --tools-active:rgb(53, 53, 53);
+    --footer-default-color:rgb(131, 131, 131);
+    --format-active:rgb(0, 132, 255);
+    --footer-btn:rgb(131, 131, 131);
+    --footer-btn-active:rgb(204, 204, 204);
+}
 
 body,html{
     margin: 0;
@@ -16,7 +26,7 @@ body,html{
     height: 100vh;
 }
 body{
-    background-color: whitesmoke;
+    background-color: var(--background-color);
 }
 *{
     font-family: 'Baloo Bhaijaan 2', cursive;
@@ -53,7 +63,10 @@ flex-direction: column;
     font-size: 35px;
     margin: 26.050px 0px;
 }
-.title span{
+.title input{
+    display: none;
+}
+.title label{
     margin: 40px 0px;
     color: white;
     font-size: 23px;
@@ -67,8 +80,8 @@ flex-direction: column;
     display: flex;
     padding: 9px 13px;
     border-radius: 4px;
-    background-color: white;
-    box-shadow: 0px 0px 10px 1px rgb(173, 173, 173);
+    background-color: var(--white-color);
+    box-shadow: var(--main-box-shadow);
 }
 
 /* add to list button */
@@ -79,7 +92,7 @@ flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 13px;
-    color: whitesmoke;
+    color: var(--background-color);
     border-radius: 100%;
     border: 1px solid rgb(201, 201, 201);
     margin-right: 5px;
@@ -92,13 +105,16 @@ flex-direction: column;
 }
 /* add to list input */
 .insert input{
-    width: 300px;
+    width: 100%;
     padding: 0px 5px 0px 10px;
     border: none;
     font-size: 17px;
+    background-color: var(--white-color);
+    color: var(--black-color);
 }
 .insert input::placeholder{
     font-size: 15px;
+    color: var(--footer-default-color);
 }
 .insert input:focus{
     outline: none;
@@ -118,7 +134,7 @@ flex-direction: column;
     cursor: pointer;
     margin-bottom: 3px;
     padding: 0px 0px 0px 10px;
-    border-bottom: 2px solid rgb(219, 219, 219);
+    border-bottom: 2px solid var(--list-Separator);
 }
 .list label:hover .tools{
     visibility: visible;
@@ -134,7 +150,7 @@ flex-direction: column;
 .list label .checkbox{
     width: 23px;
     height: 23px;
-    border: 1px solid rgb(197, 197, 197);
+    border: 1px solid var(--list-Separator);
     border-radius: 100%;
     position: relative;
     margin: 0 15px 0 2px;
@@ -144,7 +160,7 @@ flex-direction: column;
     align-items: center;
 }
 .list label .checkbox:hover{
-    border-color: rgb(146, 146, 146);
+    border-color: var(--tools-hover);
 }
 .list label input:checked + .checkbox:hover{
     border-color: rgb(197, 197, 197);
@@ -152,8 +168,8 @@ flex-direction: column;
 .list label .checkbox i{
     font-size: 12px;
     opacity: 0;
-    transition: 200ms ease-in;
-    color: whitesmoke;
+    transition: 200ms ease-in-out;
+    color: var(--background-color);
 }
 .list label input:checked + .checkbox{
     background-image: linear-gradient(-40deg , #b26cf2 , #a577f3 , #7b9efa);
@@ -162,8 +178,11 @@ flex-direction: column;
     opacity: 1;
 }
 .list label input:checked + .checkbox + input[type="text"]{
-    color: rgb(199, 199, 199);
+    color: var(--line-through);
     text-decoration: line-through;
+}
+.list label input[type="text"]{
+    color: var(--black-color);
 }
 .list label input[type="checkbox"]{
     display: none;
@@ -176,7 +195,7 @@ flex-direction: column;
     padding: 10px 0px;
 }
 .list label input:disabled{
-    color: black;
+    color: var(--black-color);
     background-color: transparent;
 }
 /* edit/close btn */
@@ -193,13 +212,13 @@ flex-direction: column;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: rgb(204, 204, 204);
+    color: var(--tools-default-color);
 }
 .list label .tools button:hover{
-    color: rgb(143, 143, 143);
+    color: var(--tools-hover);
 }
 .list label .tools button:active{
-    color: rgb(53, 53, 53);
+    color: var(--tools-active);
 }
 .list label .tools button:first-child{
     font-size: 10px;
@@ -213,7 +232,7 @@ footer{
     display: flex;
     justify-content: space-around;
     padding: 5px 0px;
-    color: rgb(131, 131, 131);
+    color: var(--footer-default-color);
     position: relative;
 }
 footer div:first-child p{
@@ -234,10 +253,10 @@ footer .format label{
     cursor: pointer;
 }
 footer .format label:hover{
-    color: black;
+    color: var(--black-color);
 }
 footer div.format label input[type="radio"]:checked + span{
-    color: rgb(0, 132, 255);
+    color: var(--format-active);
 }
 footer div.format label input[type="radio"]{
     display: none;
@@ -248,7 +267,7 @@ footer button{
     border: none;
     cursor: pointer;
     padding-top: 2px;
-    color: rgb(131, 131, 131);
+    color: var(--footer-btn);
 }
 footer button:focus{
     outline: none;
@@ -256,10 +275,10 @@ footer button:focus{
     box-shadow: none;
 }
 footer button:hover{
-    color: black;
+    color: var(--black-color);
 }
 footer button:active{
-    color: rgb(204, 204, 204);
+    color: var(--footer-btn-active);
 }
 
 /* ---------- media query ---------- */
@@ -293,8 +312,8 @@ footer button:active{
         top: 130%;
         left: 0px;
         right: 0px;
-        background-color: #ffffff;
-        border: 1px solid rgb(202, 202, 202);
+        background-color: var(--background-color);
+        border: 1px solid var(--list-Separator);
         border-radius: 5px;
         width: 100%;
     }

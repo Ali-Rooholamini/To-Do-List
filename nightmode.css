@@ -1,0 +1,15 @@
+:root{
+    --main-box-shadow:0px 0px 10px 1px rgb(0, 0, 0);
+    --background-color: #181824;
+    --white-color: #25273c;
+    --list-Separator:rgb(78, 78, 78);
+    --line-through:rgb(121, 120, 120);
+    --tools-default-color:rgb(143, 143, 143);
+    --black-color:#d3d4e0;
+    --tools-hover:rgb(194, 194, 194);
+    --tools-active:rgb(255, 255, 255);
+    --footer-default-color:rgb(131, 131, 131);
+    --format-active:rgb(0, 132, 255);
+    --footer-btn:rgb(131, 131, 131);
+    --footer-btn-active:rgb(170, 170, 170);
+}
