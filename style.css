@@ -17,7 +17,6 @@ body,html{
 }
 body{
     background-color: whitesmoke;
-    overflow-x: hidden;
 }
 *{
     font-family: 'Baloo Bhaijaan 2', cursive;
@@ -144,6 +143,12 @@ flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.list label .checkbox:hover{
+    border-color: rgb(146, 146, 146);
+}
+.list label input:checked + .checkbox:hover{
+    border-color: rgb(197, 197, 197);
+}
 .list label .checkbox i{
     font-size: 12px;
     opacity: 0;
@@ -155,6 +160,10 @@ flex-direction: column;
 }
 .list label input:checked + .checkbox i {
     opacity: 1;
+}
+.list label input:checked + .checkbox + input[type="text"]{
+    color: rgb(199, 199, 199);
+    text-decoration: line-through;
 }
 .list label input[type="checkbox"]{
     display: none;
@@ -174,10 +183,15 @@ flex-direction: column;
 .list label .tools{
     visibility: hidden;
 }
+.list label .tools button:first{
+    padding: 13px 9px 15px 1px;
+}
+.list label .tools button:last-child{
+    padding: 13px 22px 13px 11px;
+}
 .list label .tools button{
     background-color: transparent;
     border: none;
-    margin-left: 5px;
     cursor: pointer;
     color: rgb(204, 204, 204);
 }
@@ -194,13 +208,70 @@ flex-direction: column;
     font-size: 15px;
 }
 
-/* media query */
+/* ---------------- Footer ---------------- */
+footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0px;
+    color: rgb(131, 131, 131);
+    position: relative;
+}
+footer div:first-child p{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 15px;
+}
+/* format division */
+footer div.format{
+    display: flex;
+    justify-content: space-around;
+}
+footer .format label{
+    all: unset;
+    padding: 2px 5px 0px 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+footer .format label:hover{
+    color: black;
+}
+footer div.format label input[type="radio"]:checked + span{
+    color: rgb(0, 132, 255);
+}
+footer div.format label input[type="radio"]{
+    display: none;
+}
+/* clear btn */
+footer button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-top: 2px;
+    color: rgb(131, 131, 131);
+}
+footer button:focus{
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+footer button:hover{
+    color: black;
+}
+footer button:active{
+    color: rgb(204, 204, 204);
+}
+
+/* ---------- media query ---------- */
 @media screen and (max-width: 650px) {
     .title{
         width: 400px;
     }
     .list label input{
         width: 73%;
+    }
+    footer .format label span , footer button , footer div:first-child p{
+        font-size: 13px;
     }
 }
 @media screen and (max-width: 400px) {
@@ -212,5 +283,19 @@ flex-direction: column;
     }
     .list label input{
         width: 58%;
+    }
+    footer{
+        justify-content: space-between;
+        padding: 4px 10px 6px 15px;
+    }
+    footer .format{
+        position: absolute;
+        top: 130%;
+        left: 0px;
+        right: 0px;
+        background-color: #ffffff;
+        border: 1px solid rgb(202, 202, 202);
+        border-radius: 5px;
+        width: 100%;
     }
 }
