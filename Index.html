@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="" id="nightmode">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title>To Do List</title>
+    <title>ToDo App</title>
 </head>
 <body>
     <div class="img"></div>
+    <div id="notify" class="">Enter Todo Title</div>
     <section>
         <div class="title">
             <h2>T O D O</h2>
@@ -18,46 +19,10 @@
             <label for="darkmode" onclick="changeMode()"><span><i class="fas fa-moon"></i></span></label>
         </div>
         <div class="insert">
-            <button class="addbtn"><i class="fas fa-plus"></i></button>
-            <input type="text" placeholder="Create a new todo...">
+            <button class="addbtn" onclick="addTodo()"><i class="fas fa-plus"></i></button>
+            <input type="text" placeholder="Create a new todo..." value="">
         </div>
         <div class="insert list">
-            <label>
-                <input type="checkbox">
-                <div class="checkbox"><i class="fas fa-check"></i></div>   
-                <input type="text" value="asdasd" disabled>
-                <div class="tools">
-                    <button><i class="fas fa-pen"></i></button>
-                    <button><i class="fas fa-times"></i></button>
-                </div>
-            </label>
-            <label>
-                <input type="checkbox">
-                <div class="checkbox"><i class="fas fa-check"></i></div>   
-                <input type="text" value="asdasd" disabled>
-                <div class="tools">
-                    <button><i class="fas fa-pen"></i></button>
-                    <button><i class="fas fa-times"></i></button>
-                </div>
-            </label>
-            <label>
-                <input type="checkbox">
-                <div class="checkbox"><i class="fas fa-check"></i></div>   
-                <input type="text" value="asdasd" disabled>
-                <div class="tools">
-                    <button><i class="fas fa-pen"></i></button>
-                    <button><i class="fas fa-times"></i></button>
-                </div>
-            </label>
-            <label>
-                <input type="checkbox">
-                <div class="checkbox"><i class="fas fa-check"></i></div>   
-                <input type="text" value="asdasd">
-                <div class="tools">
-                    <button><i class="fas fa-pen"></i></button>
-                    <button><i class="fas fa-times"></i></button>
-                </div>
-            </label>
             <footer>
                 <div>
                     <p><span>5</span> Items Left</p>

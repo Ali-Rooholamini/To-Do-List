@@ -19,13 +19,13 @@
 body,html{
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
 }
 body{
+    margin: 110px 0 100px 0 ;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     background-color: var(--background-color);
 }
 *{
@@ -45,11 +45,46 @@ body{
     background-size: cover;
 }
 
+/* notification */
+
+div#notify{
+    padding: 13px;
+    position: absolute;
+    top: 50px;
+    left: -300px;
+    font-size: 20px;
+    margin: 0;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    user-select: none;
+}
+
+#notify.notifying{
+    animation: notifying 500ms ease-in 200ms forwards;
+}
+@keyframes notifying {
+    0%{left: -300px;}
+    70%{left: 110px;}
+    100%{left: 50px;}
+}
+
+#notify.notified{
+    animation: notified 1s ease-out 200ms forwards;
+    left: 50px;
+}
+@keyframes notified {
+    0%{left: 50px;}
+    30%{left: 110px;}
+    100%{left: -300px;}
+}
+
+
 /* main section */
 
 section{
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 /* title */
 .title{
