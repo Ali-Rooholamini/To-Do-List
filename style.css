@@ -16,6 +16,10 @@
     --footer-btn-active:rgb(204, 204, 204);
 }
 
+.complete{
+    background-color: red;
+}
+
 body,html{
     margin: 0;
     padding: 0;

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="" id="nightmode">
+    <link rel="stylesheet" href="nightmode.css" id="nightmode">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>ToDo App</title>
 </head>
@@ -25,18 +25,18 @@
         <div class="insert list">
             <footer>
                 <div>
-                    <p><span>5</span> Items Left</p>
+                    <p><span>0</span> Items Left</p>
                 </div>
                 <div class="format">
-                    <label>
+                    <label id="FormatAll">
                         <input type="radio" name="formatName" checked>
                         <span>All</span>
                     </label>
-                    <label>
+                    <label id="FormatActives">
                         <input type="radio" name="formatName">
                         <span>Actives</span>
                     </label>
-                    <label>
+                    <label id="FormatCompleted">
                         <input type="radio" name="formatName">
                         <span>Completed</span>
                     </label>
