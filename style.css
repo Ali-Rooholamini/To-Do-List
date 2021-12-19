@@ -36,6 +36,9 @@ body{
     font-family: 'Baloo Bhaijaan 2', cursive;
     box-sizing: border-box;
 }
+li{
+    list-style: none;
+}
 .img{
     position: absolute;
     top: 0;
@@ -167,103 +170,109 @@ section{
     margin-top: 20px;
     padding: 4px 0px 0px 0px;
 }
-.list label{
+.list li{
     width: 100%;
     display: flex;
     align-items: center;
-    cursor: pointer;
     margin-bottom: 3px;
     padding: 0px 0px 0px 10px;
     border-bottom: 2px solid var(--list-Separator);
 }
-.list label:hover .tools{
+.list li:hover .tools{
     visibility: visible;
 }
-.list label .tools{
+.list li .tools{
     display: flex;
     justify-content: flex-end;
 }
-.list label:last-child{
+.list li:last-child{
     border-bottom: none;
     padding-bottom: 0;
 }
-.list label .checkbox{
+.list li label{
+    width: 23px;
+    height: 23px;
+    margin: 0 15px 0 2px;
+    cursor: pointer;
+    border-radius: 100%;
+}
+.list li label .checkbox{
     width: 23px;
     height: 23px;
     border: 1px solid var(--list-Separator);
     border-radius: 100%;
     position: relative;
-    margin: 0 15px 0 2px;
+    margin: 0 2px 0 0px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.list label .checkbox:hover{
+.list li label .checkbox:hover{
     border-color: var(--tools-hover);
 }
-.list label input:checked + .checkbox:hover{
+.list li label input:checked + .checkbox:hover{
     border-color: rgb(197, 197, 197);
 }
-.list label .checkbox i{
+.list li label .checkbox i{
     font-size: 12px;
     opacity: 0;
     transition: 200ms ease-in-out;
     color: var(--background-color);
 }
-.list label input:checked + .checkbox{
+.list li label input:checked + .checkbox{
     background-image: linear-gradient(-40deg , #b26cf2 , #a577f3 , #7b9efa);
 }
-.list label input:checked + .checkbox i {
+.list li label input:checked + .checkbox i {
     opacity: 1;
 }
-.list label input:checked + .checkbox + input[type="text"]{
+.list li label + input[type="text"].finishedTask{
     color: var(--line-through);
     text-decoration: line-through;
 }
-.list label input[type="text"]{
+.list li input[type="text"]{
     color: var(--black-color);
 }
-.list label input[type="checkbox"]{
+.list li label input[type="checkbox"]{
     display: none;
 }
-.list label input{
+.list li input{
     display: inline-block;
     margin: 0;
     font-size: 18px;
     width: 78%;
     padding: 10px 0px;
 }
-.list label input:disabled{
+.list li input:disabled{
     color: var(--black-color);
     background-color: transparent;
 }
 /* edit/close btn */
-.list label .tools{
+.list li .tools{
     visibility: hidden;
 }
-.list label .tools button:first{
+.list li .tools button:first{
     padding: 13px 9px 15px 1px;
 }
-.list label .tools button:last-child{
+.list li .tools button:last-child{
     padding: 13px 22px 13px 11px;
 }
-.list label .tools button{
+.list li .tools button{
     background-color: transparent;
     border: none;
     cursor: pointer;
     color: var(--tools-default-color);
 }
-.list label .tools button:hover{
+.list li .tools button:hover{
     color: var(--tools-hover);
 }
-.list label .tools button:active{
+.list li .tools button:active{
     color: var(--tools-active);
 }
-.list label .tools button:first-child{
+.list li .tools button:first-child{
     font-size: 10px;
 }
-.list label .tools button:last-child{
+.list li .tools button:last-child{
     font-size: 15px;
 }
 
@@ -288,9 +297,12 @@ footer div.format{
 }
 footer .format label{
     all: unset;
-    padding: 2px 5px 0px 5px;
+    margin: 2px 5px 0px 5px;
     font-size: 15px;
     cursor: pointer;
+}
+footer .format label span{
+    padding: 5px 2px;
 }
 footer .format label:hover{
     color: var(--black-color);
@@ -326,7 +338,7 @@ footer button:active{
     .title{
         width: 400px;
     }
-    .list label input{
+    .list li input{
         width: 73%;
     }
     footer .format label span , footer button , footer div:first-child p{
@@ -340,7 +352,7 @@ footer button:active{
     .title{
         width: 100%;
     }
-    .list label input{
+    .list li input{
         width: 58%;
     }
     footer{

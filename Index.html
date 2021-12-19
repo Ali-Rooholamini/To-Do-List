@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="nightmode.css" id="nightmode">
+    <link rel="stylesheet" href="" id="nightmode">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>ToDo App</title>
 </head>
@@ -22,7 +22,7 @@
             <button class="addbtn" onclick="addTodo()"><i class="fas fa-plus"></i></button>
             <input type="text" placeholder="Create a new todo..." value="">
         </div>
-        <div class="insert list">
+        <ul class="insert list">
             <footer>
                 <div>
                     <p><span>0</span> Items Left</p>
@@ -30,18 +30,18 @@
                 <div class="format">
                     <label id="FormatAll">
                         <input type="radio" name="formatName" checked>
-                        <span>All</span>
+                        <span onclick="formatAll()">All</span>
                     </label>
                     <label id="FormatActives">
                         <input type="radio" name="formatName">
-                        <span>Actives</span>
+                        <span onclick="formatActives()">Actives</span>
                     </label>
                     <label id="FormatCompleted">
                         <input type="radio" name="formatName">
-                        <span>Completed</span>
+                        <span onclick="formatCompleted()">Completed</span>
                     </label>
                 </div>
-                <button>Clear Completed</button>
+                <button onclick="clearAllCompleted()">Clear Completed</button>
             </footer>
         </div>
     </section>

@@ -2,16 +2,16 @@
 
 
 // Show All Available Todo Items
-const itemsCount = document.querySelector("div.insert.list footer div p span");
+const itemsCount = document.querySelector("ul.insert.list footer div p span");
 function counting(){
-    let listItems = document.querySelectorAll("div.insert.list > label");
+    let listItems = document.querySelectorAll("ul.insert.list > li.active");
     itemsCount.textContent = listItems.length;
 }
 
 // Switch between Dark/Light Mode
 const nightMode = document.getElementById("nightmode");
 const checkMode = document.getElementById("darkmode");
-const nightModeIcon = document.querySelector(".title label span i");
+const nightModeIcon = document.querySelector(".title li span i");
 
 function changeMode(){
     if(checkMode.hasAttribute("checked")){
@@ -26,7 +26,7 @@ function changeMode(){
 }
 
 // add too list 
-const listFooter = document.querySelector("div.insert.list footer");
+const listFooter = document.querySelector("ul.insert.list footer");
 const newTodo = document.querySelector("div.insert input");
 const notify = document.getElementById("notify");
 let notifyFlag = true;
@@ -40,11 +40,11 @@ newTodo.addEventListener("keypress" , function(event){
 
 function addTodo() {
     if(newTodo.value){
-        let labelTag = document.createElement("label");
-        // labelTag.classList.add("active");
-        let listElements = `<input type=checkbox><div class=checkbox onclick=stats(this)><i class='fas fa-check'></i></div><input type=text value='${newTodo.value}' disabled><div class=tools><button onclick=changeTitle(this)><i class='fas fa-pen'></i></button><button onclick=removeTodo(this)><i class='fas fa-times'></i></button></div>`;
-        labelTag.innerHTML = listElements;
-        listFooter.before(labelTag);
+        let liTag = document.createElement("li");
+        liTag.classList.add("active");
+        let listElements = `<label><input type="checkbox"><div class="checkbox" onclick=stats(this)><i class="fas fa-check"></i></div></label><input type=text value='${newTodo.value}' class='' disabled><div class=tools><button onclick=changeTitle(this)><i class='fas fa-pen'></i></button><button onclick=removeTodo(this)><i class='fas fa-times'></i></button></div>`;
+        liTag.innerHTML = listElements;
+        listFooter.before(liTag);
         newTodo.value = "";
         counting();
     }else{
@@ -98,3 +98,40 @@ function changeTitle(elem){
 }
 
 // Active and completed items
+function stats(elem){
+    let todoTitle = elem.parentNode.nextSibling;
+    todoTitle.classList.toggle("finishedTask");
+    let mainParentTag = elem.parentNode.parentNode;
+    if(mainParentTag.classList.contains("active")){
+        mainParentTag.classList.replace("active" , "completed");
+        return counting();
+    }
+    mainParentTag.classList.replace("completed" , "active");
+    counting();
+}
+function formatAll(){
+    let allTask = document.querySelectorAll("ul.insert.list li");
+    allTask.forEach(function(element){
+        element.style.display = "flex";
+    });
+}
+function formatActives(){
+    let allTask = document.querySelectorAll("ul.insert.list li.completed");
+    formatAll();
+    allTask.forEach(function(element){
+        element.style.display = "none";
+    });
+}
+function formatCompleted(){
+    let allTask = document.querySelectorAll("ul.insert.list li.active");
+    formatAll();
+    allTask.forEach(function(element){
+        element.style.display = "none";
+    });
+}
+function clearAllCompleted(){
+    let allTask = document.querySelectorAll("ul.insert.list li.completed");
+    allTask.forEach(function(element){
+        element.remove();
+    });
+}
