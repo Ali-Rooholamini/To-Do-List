@@ -1,5 +1,10 @@
 "use strict";
 
+//variable
+const listFooter = document.querySelector("ul.insert.list footer"); 
+
+// page Reload Event Listener
+document.addEventListener("DOMContentLoaded" , getLocalStorage);
 
 // Show All Available Todo Items
 const itemsCount = document.querySelector("ul.insert.list footer div p span");
@@ -26,7 +31,6 @@ function changeMode(){
 }
 
 // add too list 
-const listFooter = document.querySelector("ul.insert.list footer");
 const newTodo = document.querySelector("div.insert input");
 const notify = document.getElementById("notify");
 let notifyFlag = true;
@@ -45,6 +49,7 @@ function addTodo() {
         let listElements = `<label><input type="checkbox"><div class="checkbox" onclick=stats(this)><i class="fas fa-check"></i></div></label><input type=text value='${newTodo.value}' class='' disabled><div class=tools><button onclick=changeTitle(this)><i class='fas fa-pen'></i></button><button onclick=removeTodo(this)><i class='fas fa-times'></i></button></div>`;
         liTag.innerHTML = listElements;
         listFooter.before(liTag);
+        saveLocalStorage(newTodo.value);
         newTodo.value = "";
         counting();
     }else{
@@ -68,6 +73,7 @@ function removeTodo(elem){
     parent.style.transition = "250ms ease-in";
     parent.style.opacity = ".1";
     setTimeout(function(){
+        removeFromLocalStorage(elem.parentNode.previousElementSibling);
         elem.parentNode.parentNode.remove();
         counting();
     } , 400);
@@ -137,4 +143,29 @@ function clearAllCompleted(){
     allTask.forEach(function(element){
         element.remove();
     });
+}
+
+// LocalStorage
+function saveLocalStorage(todo){
+    let savedTodoItems = localStorage.getItem("todoList") ? JSON.parse(localStorage.getItem("todoList")) : [];
+    savedTodoItems.push(todo);
+    localStorage.setItem("todoList" , JSON.stringify(savedTodoItems));
+}
+function getLocalStorage(){
+    let savedTodoItems = localStorage.getItem("todoList") ? JSON.parse(localStorage.getItem("todoList")) : [];
+    savedTodoItems.forEach(function(element){
+        let liTag = document.createElement("li");
+        liTag.classList.add("active");
+        let listElements = `<label><input type="checkbox"><div class="checkbox" onclick=stats(this)><i class="fas fa-check"></i></div></label><input type=text value='${element}' class='' disabled><div class=tools><button onclick=changeTitle(this)><i class='fas fa-pen'></i></button><button onclick=removeTodo(this)><i class='fas fa-times'></i></button></div>`;
+        liTag.innerHTML = listElements;
+        listFooter.before(liTag);
+    });
+    counting();
+}
+function removeFromLocalStorage(todo){
+    let savedTodoItems = localStorage.getItem("todoList") ? JSON.parse(localStorage.getItem("todoList")) : [];
+    let itemsList = savedTodoItems.filter(function(value){
+        return value !== todo.value;
+    });
+    localStorage.setItem("todoList" , JSON.stringify(itemsList));
 }
