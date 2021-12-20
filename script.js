@@ -11,7 +11,7 @@ function counting(){
 // Switch between Dark/Light Mode
 const nightMode = document.getElementById("nightmode");
 const checkMode = document.getElementById("darkmode");
-const nightModeIcon = document.querySelector(".title li span i");
+const nightModeIcon = document.querySelector(".title label span i");
 
 function changeMode(){
     if(checkMode.hasAttribute("checked")){
@@ -75,6 +75,9 @@ function removeTodo(elem){
 
 // Edit Todo Title
 function changeTitle(elem){
+    if(elem.parentNode.parentNode.classList.contains("completed")){
+        return;
+    }
     let editInput = elem.parentNode.previousElementSibling;
 
     editInput.addEventListener("keypress" , function(event){
