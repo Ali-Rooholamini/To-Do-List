@@ -80,18 +80,28 @@ function removeTodo(elem){
 }
 
 // Edit Todo Title
+let inputValueFlag = true;
+let inputValue;
 function changeTitle(elem){
     if(elem.parentNode.parentNode.classList.contains("completed")){
         return;
     }
     let editInput = elem.parentNode.previousElementSibling;
 
+    if(inputValueFlag){
+        inputValue = editInput.value;
+        inputValueFlag = false;
+    }
+
     editInput.addEventListener("keypress" , function(event){
         if(event.keyCode === 13){
             if(editInput.value == ""){
+                changeLocalStorage(inputValue , editInput.value);
                 return removeTodo(elem);
             }
             editInput.setAttribute("disabled" , "");
+            changeLocalStorage(inputValue , editInput.value);
+            inputValueFlag = true;
         }
     });
 
@@ -100,9 +110,12 @@ function changeTitle(elem){
         editInput.select();
     }else{
         if(editInput.value == ""){
+            changeLocalStorage(inputValue , editInput.value);
             return removeTodo(elem);
         }
         editInput.setAttribute("disabled" , "");
+        changeLocalStorage(inputValue , editInput.value);
+        inputValueFlag = true;
     }
 }
 
@@ -168,4 +181,15 @@ function removeFromLocalStorage(todo){
         return value !== todo.value;
     });
     localStorage.setItem("todoList" , JSON.stringify(itemsList));
+}
+function changeLocalStorage(lastValue , newValue){
+    let savedTodoItems = localStorage.getItem("todoList") ? JSON.parse(localStorage.getItem("todoList")) : [];
+    if(newValue == ""){
+        const index = savedTodoItems.indexOf(lastValue);
+        savedTodoItems.splice(index , 1);
+        return localStorage.setItem("todoList" , JSON.stringify(savedTodoItems));
+    }
+    const index = savedTodoItems.indexOf(lastValue);
+    savedTodoItems.splice(index , 1 , newValue);
+    localStorage.setItem("todoList" , JSON.stringify(savedTodoItems));
 }
