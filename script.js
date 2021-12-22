@@ -5,6 +5,7 @@ const listFooter = document.querySelector("ul.insert.list footer");
 
 // page Reload Event Listener
 document.addEventListener("DOMContentLoaded" , getLocalStorage);
+document.addEventListener("DOMContentLoaded" , checkLightMode);
 
 // Show All Available Todo Items
 const itemsCount = document.querySelector("ul.insert.list footer div p span");
@@ -23,10 +24,12 @@ function changeMode(){
         checkMode.removeAttribute("checked");
         nightMode.removeAttribute("href" , "nightmode.css");
         nightModeIcon.classList.replace("fa-sun","fa-moon");
+        saveLightMode();
     }else{
         checkMode.setAttribute("checked" , "");
         nightMode.setAttribute("href" , "nightmode.css");
         nightModeIcon.classList.replace("fa-moon","fa-sun");
+        saveLightMode();
     }
 }
 
@@ -153,7 +156,9 @@ function formatCompleted(){
 }
 function clearAllCompleted(){
     let allTask = document.querySelectorAll("ul.insert.list li.completed");
+    
     allTask.forEach(function(element){
+        removeFromLocalStorage(element.childNodes[1]);
         element.remove();
     });
 }
@@ -192,4 +197,25 @@ function changeLocalStorage(lastValue , newValue){
     const index = savedTodoItems.indexOf(lastValue);
     savedTodoItems.splice(index , 1 , newValue);
     localStorage.setItem("todoList" , JSON.stringify(savedTodoItems));
+}
+function saveLightMode(){
+    let savedTodoItems = localStorage.getItem("LightMode") ? JSON.parse(localStorage.getItem("LightMode")) : [];
+    if(checkMode.hasAttribute("checked")){
+        savedTodoItems.push("checked");
+        return localStorage.setItem("LightMode" , JSON.stringify(savedTodoItems));
+    }
+    savedTodoItems.splice(savedTodoItems.indexOf("checked") , 1);
+    localStorage.setItem("LightMode" , JSON.stringify(savedTodoItems));
+}
+function checkLightMode(){
+    let savedTodoItems = localStorage.getItem("LightMode") ? JSON.parse(localStorage.getItem("LightMode")) : [];
+    if(savedTodoItems[0] == "checked"){
+        checkMode.setAttribute("checked" , "");
+        nightMode.setAttribute("href" , "nightmode.css");
+        nightModeIcon.classList.replace("fa-moon","fa-sun");
+    }else{
+        checkMode.removeAttribute("checked");
+        nightMode.removeAttribute("href" , "nightmode.css");
+        nightModeIcon.classList.replace("fa-sun","fa-moon");
+    }
 }
